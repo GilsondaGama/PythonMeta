@@ -1,11 +1,9 @@
 import sqlite3
 conector = sqlite3.connect("agenda.db")
 cursor = conector.cursor()
-sql = """update contatos set Cel = ?, Tel = ? 
-where NumContato = ?"""
+sql = """delete from contatos where NumContato = ?"""
 
-print("Digite os dados separados por vírgulas")
-print("Celular, Telefone, Número do Contato")
+print("Digite o número do contato para exluir")
 
 Ler = input()
 while Ler != "":
@@ -16,9 +14,9 @@ while Ler != "":
     except:
         print("{} Dados inválidos".format(D))
     else:
-        print(" "*50, "...dados alterados com sucesso")
+        print(" "*50, "...dados excluidos com sucesso")
     finally:
-        print("Celular, Telefone, Número do Contato")
+        print("Digite o número do contato para exluir")
         Ler = input()
 cursor.close()
 conector.close()
